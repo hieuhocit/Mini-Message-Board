@@ -3,15 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= message.user %></title>
+    <title><%= message.username %></title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <h1>Detail message</h1>
     <%- include("nav") %> <% if(message) { %>
     <div class="details">
-      <h3><%= message.user %></h3>
-      <p style="margin-top: -16px"><i><%= message.added %></i></p>
+      <h3><%= message.username %></h3>
+      <p style="margin-top: -16px">
+        <i><%= message.added.toLocaleDateString() %></i>
+      </p>
       <p><%= message.text %></p>
     </div>
     <% } %>
