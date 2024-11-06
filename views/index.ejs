@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Message Board</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <%- include("nav") %>
+
+    <ul class="message-list">
+      <% if(messages && messages.length > 0) (messages.forEach(message => { %>
+      <li>
+        <h3><%= message.user %></h3>
+        <p style="margin-top: -12px"><i><%= message.added %></i></p>
+        <a href="/<%= message.user %>">Open</a>
+      </li>
+      <% })); else {%>
+      <p>There are no messages here...</p>
+      <% } %>
+    </ul>
+  </body>
+</html>
