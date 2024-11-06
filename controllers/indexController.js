@@ -8,12 +8,7 @@ module.exports = {
   async getById(req, res, next) {
     const { id } = req.params;
 
-    if (!Number(id)) {
-      next();
-      return;
-    }
-
-    const data = await Messages.getById(Number(id));
+    const data = await Messages.getById(id);
 
     if (!data) {
       next();

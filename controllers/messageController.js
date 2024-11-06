@@ -1,4 +1,5 @@
 const Messages = require('../models/Messages');
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   get(req, res) {
@@ -7,6 +8,7 @@ module.exports = {
   async post(req, res) {
     const { username, text } = req.body;
     const newData = {
+      id: uuidv4(),
       username,
       text,
       added: new Date().toISOString().split('T')[0],

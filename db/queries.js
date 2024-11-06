@@ -13,10 +13,10 @@ async function getById(id) {
   return rows[0];
 }
 
-async function createMessage({ username, text, added }) {
+async function createMessage({ id, username, text, added }) {
   const result = await pool.query(
-    'INSERT INTO messages (username, text, added) VALUES ($1,$2,$3)',
-    [username, text, added]
+    'INSERT INTO messages (id,username, text, added) VALUES ($1,$2,$3,$4)',
+    [id, username, text, added]
   );
   return result;
 }
