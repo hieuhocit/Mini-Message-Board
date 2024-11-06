@@ -1,17 +1,17 @@
-const Message = require('../models/Message');
+const Messages = require('../models/Messages');
 
 module.exports = {
   get(req, res) {
     res.render('form', { title: 'New message' });
   },
   async post(req, res) {
-    const { user, text } = req.body;
+    const { username, text } = req.body;
     const newData = {
-      user,
+      username,
       text,
-      added: new Date().toLocaleDateString(),
+      added: new Date().toISOString().split('T')[0],
     };
-    const result = await Message.save(newData);
+    const result = await Messages.save(newData);
     if (result) {
       res.redirect('/');
     } else {
